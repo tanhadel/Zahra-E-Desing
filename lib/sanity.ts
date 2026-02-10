@@ -1,0 +1,106 @@
+import { createClient } from 'next-sanity'
+import imageUrlBuilder from '@sanity/image-url'
+
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-project-id',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  apiVersion: '2024-01-01',
+  useCdn: process.env.NODE_ENV === 'production',
+})
+
+const builder = imageUrlBuilder(client)
+
+export function urlFor(source: any) {
+  return builder.image(source)
+}
+
+// Queries
+export const queries = {
+  siteSettings: `*[_type == "siteSettings"][0]{
+    ...,
+    "logo": logo.asset->url
+  }`,
+  
+  featuredCollections: `*[_type == "collection" && featured == true] | order(order asc) {
+    _id,
+    title,
+    slug,
+    description,
+    season,
+    year,
+    coverImage,
+    featured
+  }`,
+  
+  allCollections: `*[_type == "collection"] | order(year desc, order asc) {
+    _id,
+    title,
+    slug,
+    description,
+    season,
+    year,
+    coverImage
+  }`,
+  
+  collectionBySlug: (slug: string) => `*[_type == "collection" && slug.current == "${slug}"][0]{
+    ...,
+    "images": images[].asset->url
+  }`,
+  
+  featuredLookbooks: `*[_type == "lookbook" && featured == true] | order(publishedAt desc) [0...3] {
+    _id,
+    title,
+    slug,
+    subtitle,
+    mainImage,
+    publishedAt
+  }`,
+  
+  allLookbooks: `*[_type == "lookbook"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    subtitle,
+    mainImage,
+    publishedAt
+  }`,
+  
+  lookbookBySlug: (slug: string) => `*[_type == "lookbook" && slug.current == "${slug}"][0]{
+    ...,
+    "images": images[]{
+      "url": image.asset->url,
+      caption
+    }
+  }`,
+  
+  featuredBlogPosts: `*[_type == "blogPost" && featured == true] | order(publishedAt desc) [0...3] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    mainImage,
+    category,
+    publishedAt,
+    author->{name, image}
+  }`,
+  
+  allBlogPosts: `*[_type == "blogPost"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    excerpt,
+    mainImage,
+    category,
+    publishedAt,
+    author->{name, image}
+  }`,
+  
+  blogPostBySlug: (slug: string) => `*[_type == "blogPost" && slug.current == "${slug}"][0]{
+    ...,
+    author->{name, image, bio}
+  }`,
+  
+  aboutPage: `*[_type == "about"][0]{
+    ...
+  }`,
+}
