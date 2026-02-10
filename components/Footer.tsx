@@ -89,7 +89,7 @@ export default function Footer() {
               <div className="text-white">
                 <p className="text-3xl font-serif mb-4">(08) 1234 5678</p>
                 <a href="tel:0812345678" className="text-xs text-[#C8A882] hover:text-white transition-colors uppercase tracking-wider border-b border-[#C8A882] pb-1">
-                  LET'S TALK
+                  LET&apos;S TALK
                 </a>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function Footer() {
       {/* Copyright Section */}
       <div className="bg-[#1E1E1E] py-6 text-center">
         <p className="text-white text-sm">
-          Copyright © {currentYear} Zahra Ebraimi. All rights reserved. Powered by MoxCreative.
+          Copyright © {currentYear} Zahra Ebraimi. All rights reserved. Powered by Taha.
         </p>
       </div>
     </footer>

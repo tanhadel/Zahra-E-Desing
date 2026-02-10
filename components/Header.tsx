@@ -130,7 +130,7 @@ export default function Header() {
                 setIsMobileMenuOpen(true)
               }
             }}
-            className="lg:hidden text-gray-800 p-2 bg-gray-600/70 hover:bg-gray-700 transition-all duration-300 rounded"
+            className="lg:hidden w-12 h-12 flex items-center justify-center bg-gray-600/70 hover:bg-gray-700 transition-all duration-300 rounded relative z-[120]"
           >
             {isMobileMenuOpen ? <FiX size={24} className="text-white" /> : <FiMenu size={24} className="text-white" />}
           </button>
@@ -139,27 +139,8 @@ export default function Header() {
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
           <div className={`fixed top-0 left-0 right-0 bg-[#E8DDD3] z-[110] lg:hidden shadow-xl ${isClosing ? 'animate-slide-up' : 'animate-slide-down'}`}>
-            {/* Header with Logo and Close */}
-            <div className="flex items-center justify-between p-6 bg-[#E8DDD3]">
-              <Link href="/" onClick={handleCloseMobileMenu}>
-                <Image
-                  src="/images/logo-2.svg"
-                  alt="TNY - Zehra Ebraimi Designer"
-                  width={80}
-                  height={80}
-                  className="h-16 w-auto"
-                />
-              </Link>
-              <button
-                onClick={handleCloseMobileMenu}
-                className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-gray-800 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
-              >
-                <FiX size={24} />
-              </button>
-            </div>
-
             {/* Navigation Menu */}
-            <nav className="flex flex-col">
+            <nav className="flex flex-col pt-20">
               <Link 
                 href="/" 
                 onClick={handleCloseMobileMenu}

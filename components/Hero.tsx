@@ -18,6 +18,18 @@ const slides = [
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  // Detect screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024) // lg breakpoint
+    }
+    
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
 
   // Auto-play carousel
   useEffect(() => {
@@ -48,7 +60,7 @@ export default function Hero() {
           key={currentIndex}
           className="flex h-full gap-2"
           initial={{ x: 0 }}
-          animate={{ x: '-25%' }}
+          animate={{ x: isDesktop ? '-25%' : '-100%' }}
           transition={{
             duration: 0.8,
             ease: 'easeInOut',
