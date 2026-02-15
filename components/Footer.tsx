@@ -31,13 +31,26 @@ export default function Footer() {
 
             {/* Center Logo */}
             <div className="flex justify-center sm:justify-center">
-              <Image
-                src="/images/logo-2.svg"
-                alt="TNY - Zehra Ebraimi Designer"
-                width={160}
-                height={160}
-                className="w-auto h-24 opacity-90"
-              />
+              <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                {/* Textured Background Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-600 via-gray-500 to-gray-700 opacity-90" 
+                     style={{
+                       backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                       backgroundSize: '30px 30px'
+                     }}>
+                </div>
+                
+                {/* Logo Image */}
+                <div className="relative z-10 p-4 bg-gradient-to-b from-transparent via-transparent to-black/20">
+                  <Image
+                    src="/images/logo-2.svg"
+                    alt="TNY - Zehra Ebraimi Designer"
+                    width={160}
+                    height={160}
+                    className="w-auto h-24 drop-shadow-lg"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Newsletter */}

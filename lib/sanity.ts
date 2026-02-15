@@ -101,6 +101,35 @@ export const queries = {
   }`,
   
   aboutPage: `*[_type == "about"][0]{
-    ...
+    title,
+    heroImage,
+    heroTitle,
+    heroSubtitle,
+    sectionLabel,
+    mainTitle,
+    description,
+    mainImage,
+    featureCards[]{
+      title,
+      description
+    },
+    coreBusinessLabel,
+    coreBusinessTitle,
+    coreBusinessDescription,
+    serviceCards[]{
+      image,
+      title,
+      description
+    },
+    teamLabel,
+    teamTitle,
+    teamMembers[]{
+      image,
+      name,
+      role
+    },
+    quoteImage,
+    quoteText,
+    quoteDescription
   }`,
 }

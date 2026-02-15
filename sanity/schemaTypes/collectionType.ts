@@ -1,17 +1,19 @@
-import {defineType} from 'sanity'
+import {SparklesIcon} from '@sanity/icons'
+import {defineField, defineType} from 'sanity'
 
-export default defineType({
+export const collectionType = defineType({
   name: 'collection',
   title: 'Collection',
   type: 'document',
+  icon: SparklesIcon,
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -20,14 +22,14 @@ export default defineType({
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
       rows: 3,
-    },
-    {
+    }),
+    defineField({
       name: 'season',
       title: 'Season',
       type: 'string',
@@ -39,14 +41,14 @@ export default defineType({
           { title: 'Pre-Fall', value: 'pre-fall' },
         ],
       },
-    },
-    {
+    }),
+    defineField({
       name: 'year',
       title: 'Year',
       type: 'number',
       validation: (Rule) => Rule.required().min(2020).max(2030),
-    },
-    {
+    }),
+    defineField({
       name: 'coverImage',
       title: 'Cover Image',
       type: 'image',
@@ -54,8 +56,8 @@ export default defineType({
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: 'images',
       title: 'Gallery Images',
       type: 'array',
@@ -67,34 +69,32 @@ export default defineType({
           },
         },
       ],
-    },
-    {
+    }),
+    defineField({
       name: 'featured',
       title: 'Featured Collection',
       type: 'boolean',
       description: 'Display this collection on the homepage',
       initialValue: false,
-    },
-    {
+    }),
+    defineField({
       name: 'order',
       title: 'Display Order',
       type: 'number',
       description: 'Lower numbers appear first',
-    },
+    }),
   ],
   preview: {
     select: {
       title: 'title',
-      season: 'season',
-      year: 'year',
+      subtitle: 'season',
       media: 'coverImage',
     },
-    prepare(selection) {
-      const {title, season, year, media} = selection
+    prepare({ title, subtitle, media }) {
       return {
-        title: title,
-        subtitle: season && year ? `${season} ${year}` : undefined,
-        media: media,
+        title,
+        subtitle: subtitle ? `${subtitle}` : 'No season',
+        media,
       }
     },
   },
