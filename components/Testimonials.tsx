@@ -98,7 +98,7 @@ export default function Testimonials() {
                   />
                 </div>
                 <p className="text-gray-600 mb-6 italic leading-relaxed">
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </p>
                 <h3 className="font-serif font-semibold text-lg mb-1">{testimonial.name}</h3>
                 <p className="text-gray-500 italic text-sm">{testimonial.role}</p>

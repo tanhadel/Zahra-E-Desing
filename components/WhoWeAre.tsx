@@ -42,7 +42,7 @@ export default function WhoWeAre() {
           >
             <p className="font-serif italic text-3xl text-gray-500 mb-4">Who we are</p>
             <h2 className="text-4xl md:text-5xl font-serif font-normal mb-8 leading-tight">
-              Expert wardrobe styling from the industry's top stylists.
+              Expert wardrobe styling from the industry&apos;s top stylists.
             </h2>
             <div className="w-16 h-0.5 bg-gray-300 mb-8" />
             <p className="text-gray-700 mb-6 leading-relaxed">
