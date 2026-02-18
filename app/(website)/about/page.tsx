@@ -49,7 +49,7 @@ export default async function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             {/* Header with text and description */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 text-center lg:text-left">
               <div>
                 {aboutData.sectionLabel && (
                   <p className="font-['Playfair_Display'] italic text-2xl text-gray-600 mb-4">
@@ -63,7 +63,7 @@ export default async function AboutPage() {
                 )}
               </div>
               
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center items-center lg:items-start">
                 {aboutData.description && (
                   <p className="text-gray-600 text-lg mb-6">
                     {aboutData.description}
@@ -97,8 +97,8 @@ export default async function AboutPage() {
                     ];
                     
                     return (
-                      <div key={index} className="text-left lg:text-right">
-                        <div className="w-16 h-16 mb-6 border border-primary-400 flex items-center justify-center text-primary-500 lg:ml-auto">
+                      <div key={index} className="text-center lg:text-right">
+                        <div className="w-16 h-16 mb-6 border border-primary-400 flex items-center justify-center text-primary-500 mx-auto lg:ml-auto lg:mr-0">
                           {icons[index]}
                         </div>
                         <h3 className="text-2xl font-display font-semibold mb-4 text-gray-900">{card.title}</h3>
@@ -137,8 +137,8 @@ export default async function AboutPage() {
                     ];
                     
                     return (
-                      <div key={index} className="text-left">
-                        <div className="w-16 h-16 mb-6 border border-primary-400 flex items-center justify-center text-primary-500">
+                      <div key={index} className="text-center lg:text-left">
+                        <div className="w-16 h-16 mb-6 border border-primary-400 flex items-center justify-center text-primary-500 mx-auto lg:mx-0">
                           {icons[index]}
                         </div>
                         <h3 className="text-2xl font-display font-semibold mb-4 text-gray-900">{card.title}</h3>
