@@ -3,19 +3,28 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { urlFor } from '@/lib/sanity'
 
-const slides = [
+interface HeroProps {
+  data?: {
+    heroTitle?: string
+    heroSubtitle?: string
+    heroImages?: any[]
+  }
+}
+
+const defaultSlides = [
   'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600',
   'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600',
   'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600',
   'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600',
-  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=600',
-  'https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=600',
-  'https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=600',
-  'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=600',
 ]
 
-export default function Hero() {
+export default function Hero({ data }: HeroProps) {
+  const slides = data?.heroImages?.length 
+    ? data.heroImages.map(img => urlFor(img).url()) 
+    : defaultSlides
+  
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)

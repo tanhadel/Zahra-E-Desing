@@ -2,9 +2,19 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { urlFor } from '@/lib/sanity'
 
-export default function OfferingsSection() {
-  const offerings = [
+interface OfferingsSectionProps {
+  data?: {
+    offerings?: Array<{
+      title: string
+      image: any
+    }>
+  }
+}
+
+export default function OfferingsSection({ data }: OfferingsSectionProps) {
+  const defaultOfferings = [
     {
       title: 'Design for Personal',
       description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit dolor',
@@ -21,6 +31,14 @@ export default function OfferingsSection() {
       image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070',
     },
   ]
+  
+  const offerings = data?.offerings?.length 
+    ? data.offerings.map(offering => ({
+        title: offering.title,
+        description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit dolor',
+        image: urlFor(offering.image).url(),
+      }))
+    : defaultOfferings
 
   return (
     <section className="py-20 bg-gray-900 text-white">

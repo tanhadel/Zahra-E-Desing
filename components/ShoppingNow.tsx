@@ -2,8 +2,23 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { urlFor } from '@/lib/sanity'
 
-export default function ShoppingNow() {
+interface ShoppingNowProps {
+  data?: {
+    shoppingLeftImage?: any
+    shoppingRightImage?: any
+  }
+}
+
+export default function ShoppingNow({ data }: ShoppingNowProps) {
+  const leftImage = data?.shoppingLeftImage 
+    ? urlFor(data.shoppingLeftImage).url()
+    : 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071'
+  
+  const rightImage = data?.shoppingRightImage 
+    ? urlFor(data.shoppingRightImage).url()
+    : 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070'
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -17,7 +32,7 @@ export default function ShoppingNow() {
             className="relative h-[500px]"
           >
             <Image
-              src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071"
+              src={leftImage}
               alt="Fashion Shopping"
               fill
               className="object-cover"
@@ -55,7 +70,7 @@ export default function ShoppingNow() {
             className="relative h-[500px]"
           >
             <Image
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070"
+              src={rightImage}
               alt="Fashion Shopping"
               fill
               className="object-cover"

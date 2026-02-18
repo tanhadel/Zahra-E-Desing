@@ -132,4 +132,24 @@ export const queries = {
     quoteText,
     quoteDescription
   }`,
+
+  homePage: `*[_type == "homePage"][0]{
+    heroTitle,
+    heroSubtitle,
+    heroImages,
+    whoWeAreImage,
+    offerings[]{
+      title,
+      image
+    },
+    shoppingLeftImage,
+    shoppingRightImage,
+    quoteBackgroundImage,
+    testimonials[]{
+      name,
+      role,
+      quote,
+      image
+    }
+  }`,
 }

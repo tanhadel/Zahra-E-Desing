@@ -4,8 +4,18 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FiUser, FiBriefcase, FiTrendingUp } from 'react-icons/fi'
 import { PiDressFill } from 'react-icons/pi'
+import { urlFor } from '@/lib/sanity'
 
-export default function WhoWeAre() {
+interface WhoWeAreProps {
+  data?: {
+    whoWeAreImage?: any
+  }
+}
+
+export default function WhoWeAre({ data }: WhoWeAreProps) {
+  const imageUrl = data?.whoWeAreImage 
+    ? urlFor(data.whoWeAreImage).url() 
+    : 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2000'
   const features = [
     {
       icon: <FiUser size={48} />,
@@ -30,70 +40,130 @@ export default function WhoWeAre() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="relative py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4">
-        {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 max-w-6xl mx-auto">
+        {/* Top Section - Two Columns */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto"
+        >
+          {/* Left Column - Headings */}
+          <div>
+            <p className="font-serif italic text-3xl text-gray-500 mb-4">Who we are</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-normal mb-6 leading-tight">
+              Expert wardrobe styling from the industry&apos;s top stylists.
+            </h2>
+            <div className="w-16 h-0.5 bg-gray-300" />
+          </div>
+
+          {/* Right Column - Description and CTA */}
+          <div className="flex flex-col justify-center">
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Ante metus himenaeos eget feugiat commodo nostra. Id felis etiam erat turpis porta eros nunc 
+              consequat primis volutpat nullam. Fermentum odio cras maximus gravida aliquet congue.
+            </p>
+            <div>
+              <button className="inline-flex items-center gap-2 text-primary-500 hover:text-primary-600 transition-colors group">
+                <span className="text-2xl group-hover:translate-x-1 transition-transform">→</span>
+                <span className="font-medium">Discover more</span>
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Features Section - Three Columns (2-1-2 Pattern) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+          {/* Left Column - Two Features */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="space-y-12"
           >
-            <p className="font-serif italic text-3xl text-gray-500 mb-4">Who we are</p>
-            <h2 className="text-4xl md:text-5xl font-serif font-normal mb-8 leading-tight">
-              Expert wardrobe styling from the industry&apos;s top stylists.
-            </h2>
-            <div className="w-16 h-0.5 bg-gray-300 mb-8" />
-            <p className="text-gray-700 mb-6 leading-relaxed">
-              Ante metus himenaeos eget feugiat commodo nostra. Id felis etiam erat turpis porta eros nunc 
-              consequat primis volutpat nullam. Fermentum odio cras maximus gravida aliquet congue.
-            </p>
-            <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary-400 text-white hover:bg-primary-500 transition-colors rounded-full">
-              <span>DISCOVER MORE</span>
-              <span>→</span>
-            </button>
+            <div className="text-center md:text-left">
+              <div className="mb-4 text-primary-500 flex justify-center md:justify-start">
+                {features[0].icon}
+              </div>
+              <h3 className="text-xl font-serif font-semibold mb-3">{features[0].title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {features[0].description}
+              </p>
+            </div>
+
+            <div className="text-center md:text-left">
+              <div className="mb-4 text-primary-500 flex justify-center md:justify-start">
+                {features[2].icon}
+              </div>
+              <h3 className="text-xl font-serif font-semibold mb-3">{features[2].title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {features[2].description}
+              </p>
+            </div>
           </motion.div>
-          
+
+          {/* Center Column - Image */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative h-[600px]"
+            className="relative h-[500px] md:h-[600px]"
           >
             <Image
-              src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071"
+              src={imageUrl}
               alt="Fashion Designer"
               fill
               className="object-cover"
             />
           </motion.div>
-        </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center text-center"
-            >
-              <div className="mb-6 text-primary-300">
-                {feature.icon}
+          {/* Right Column - Two Features */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="text-center md:text-left">
+              <div className="mb-4 text-primary-500 flex justify-center md:justify-start">
+                {features[1].icon}
               </div>
-              <h3 className="text-xl font-serif font-semibold mb-3">{feature.title}</h3>
-              <div className="w-12 h-0.5 bg-gray-300 mb-4" />
+              <h3 className="text-xl font-serif font-semibold mb-3">{features[1].title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                {feature.description}
+                {features[1].description}
               </p>
-            </motion.div>
-          ))}
+            </div>
+
+            <div className="text-center md:text-left">
+              <div className="mb-4 text-primary-500 flex justify-center md:justify-start">
+                {features[3].icon}
+              </div>
+              <h3 className="text-xl font-serif font-semibold mb-3">{features[3].title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {features[3].description}
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Background Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none"
+      >
+        <span className="text-6xl md:text-7xl lg:text-8xl font-serif text-gray-200/30 whitespace-nowrap">
+          Fashion Designer
+        </span>
+      </motion.div>
     </section>
   )
 }

@@ -2,15 +2,26 @@
 
 import { motion } from 'framer-motion'
 import { PiDressFill } from 'react-icons/pi'
+import { urlFor } from '@/lib/sanity'
 
-export default function FashionQuote() {
+interface FashionQuoteProps {
+  data?: {
+    quoteBackgroundImage?: any
+  }
+}
+
+export default function FashionQuote({ data }: FashionQuoteProps) {
+  const backgroundImage = data?.quoteBackgroundImage 
+    ? urlFor(data.quoteBackgroundImage).url()
+    : 'https://images.unsplash.com/photo-1558769132-cb1aea8f6024?q=80&w=2074'
+  
   return (
     <section className="relative py-32 overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1558769132-cb1aea8f6024?q=80&w=2074')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${backgroundImage}')`,
         }}
       />
 

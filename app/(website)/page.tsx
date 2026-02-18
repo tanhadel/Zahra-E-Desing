@@ -6,18 +6,21 @@ import ShoppingNow from '@/components/ShoppingNow'
 import ServicesSection from '@/components/ServicesSection'
 import FashionQuote from '@/components/FashionQuote'
 import Testimonials from '@/components/Testimonials'
+import { client, queries, urlFor } from '@/lib/sanity'
 
-export default function Home() {
+export default async function Home() {
+  const homeData = await client.fetch(queries.homePage)
+
   return (
     <>
-      <Hero />
-      <WhoWeAre />
-      <OfferingsSection />
+      <Hero data={homeData} />
+      <WhoWeAre data={homeData} />
+      <OfferingsSection data={homeData} />
       <FeaturedCollections />
-      <ShoppingNow />
+      <ShoppingNow data={homeData} />
       <ServicesSection />
-      <FashionQuote />
-      <Testimonials />
+      <FashionQuote data={homeData} />
+      <Testimonials data={homeData} />
     </>
   )
 }

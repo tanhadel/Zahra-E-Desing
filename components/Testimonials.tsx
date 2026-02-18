@@ -3,9 +3,21 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { urlFor } from '@/lib/sanity'
 
-export default function Testimonials() {
-  const testimonials = [
+interface TestimonialsProps {
+  data?: {
+    testimonials?: Array<{
+      name: string
+      role: string
+      quote: string
+      image: any
+    }>
+  }
+}
+
+export default function Testimonials({ data }: TestimonialsProps) {
+  const defaultTestimonials = [
     {
       name: 'Emma Rodriguez',
       role: 'Fashion Enthusiast',
@@ -25,6 +37,13 @@ export default function Testimonials() {
       quote: 'This project has become my go-to source for fashion inspiration. The curated collections and style guides have elevated my blog content and captivated my audience. Love it!',
     },
   ]
+  
+  const testimonials = data?.testimonials?.length 
+    ? data.testimonials.map(t => ({
+        ...t,
+        image: urlFor(t.image).url(),
+      }))
+    : defaultTestimonials
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
