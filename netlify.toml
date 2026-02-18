@@ -8,3 +8,5 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Environment variables are configured in Netlify dashboard
