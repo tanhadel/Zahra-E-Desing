@@ -39,10 +39,12 @@ export default function Testimonials({ data }: TestimonialsProps) {
   ]
   
   const testimonials = data?.testimonials?.length 
-    ? data.testimonials.map(t => ({
-        ...t,
-        image: t.image?.url || urlFor(t.image).url(),
-      }))
+    ? data.testimonials
+        .filter(t => t.image?.url)
+        .map(t => ({
+          ...t,
+          image: t.image.url,
+        }))
     : defaultTestimonials
 
   const [currentIndex, setCurrentIndex] = useState(0)

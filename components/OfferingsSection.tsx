@@ -33,11 +33,13 @@ export default function OfferingsSection({ data }: OfferingsSectionProps) {
   ]
   
   const offerings = data?.offerings?.length 
-    ? data.offerings.map(offering => ({
-        title: offering.title,
-        description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit dolor',
-        image: offering.image?.url || urlFor(offering.image).url(),
-      }))
+    ? data.offerings
+        .filter(offering => offering.image?.url)
+        .map(offering => ({
+          title: offering.title,
+          description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit dolor',
+          image: offering.image.url,
+        }))
     : defaultOfferings
 
   return (

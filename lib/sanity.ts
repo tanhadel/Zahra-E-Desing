@@ -144,7 +144,7 @@ export const queries = {
       ...,
       "url": asset->url
     },
-    offerings[]{
+    offerings[defined(image.asset)]{
       title,
       image{
         ...,
@@ -163,7 +163,7 @@ export const queries = {
       ...,
       "url": asset->url
     },
-    testimonials[]{
+    testimonials[defined(image.asset)]{
       name,
       role,
       quote,
