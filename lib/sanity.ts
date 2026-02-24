@@ -136,20 +136,41 @@ export const queries = {
   homePage: `*[_type == "homePage"][0]{
     heroTitle,
     heroSubtitle,
-    heroImages,
-    whoWeAreImage,
+    heroImages[]{
+      ...,
+      "url": asset->url
+    },
+    whoWeAreImage{
+      ...,
+      "url": asset->url
+    },
     offerings[]{
       title,
-      image
+      image{
+        ...,
+        "url": asset->url
+      }
     },
-    shoppingLeftImage,
-    shoppingRightImage,
-    quoteBackgroundImage,
+    shoppingLeftImage{
+      ...,
+      "url": asset->url
+    },
+    shoppingRightImage{
+      ...,
+      "url": asset->url
+    },
+    quoteBackgroundImage{
+      ...,
+      "url": asset->url
+    },
     testimonials[]{
       name,
       role,
       quote,
-      image
+      image{
+        ...,
+        "url": asset->url
+      }
     }
   }`,
 }
