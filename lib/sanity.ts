@@ -136,7 +136,7 @@ export const queries = {
   homePage: `*[_type == "homePage"][0]{
     heroTitle,
     heroSubtitle,
-    heroImages[]{
+    heroImages[defined(asset)]{
       ...,
       "url": asset->url
     },
