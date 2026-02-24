@@ -19,9 +19,11 @@ export default function FashionQuote({ data }: FashionQuoteProps) {
     <section className="relative py-32 overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-center"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${backgroundImage}')`,
+          backgroundSize: '150%', // Zoomed out to show more of the image
+          backgroundPosition: 'center center',
         }}
       />
 

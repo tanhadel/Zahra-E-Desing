@@ -15,11 +15,24 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section className="relative py-20 bg-gray-900">
+      {/* Background Image with Zoom Out Effect */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-40"
+        style={{
+          backgroundImage: 'url(/images/newsletter-bg.jpg)',
+          backgroundSize: '120%', // Zoomed out to show more of the image
+          backgroundPosition: 'center center',
+        }}
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Social Media */}
         <div className="text-center mb-16">
-          <h3 className="text-sm uppercase tracking-wider text-gray-600 mb-8">FOLLOW OUR SOCIAL NETWORK</h3>
+          <h3 className="text-sm uppercase tracking-wider text-white mb-8">FOLLOW OUR SOCIAL NETWORK</h3>
           <div className="flex justify-center gap-6">
             <a
               href="#"
@@ -50,7 +63,7 @@ export default function Newsletter() {
 
         {/* Newsletter */}
         <div className="max-w-2xl mx-auto text-center">
-          <h3 className="text-sm uppercase tracking-wider text-gray-600 mb-8">SUBSCRIBE OUR NEWSLETTER</h3>
+          <h3 className="text-sm uppercase tracking-wider text-white mb-8">SUBSCRIBE OUR NEWSLETTER</h3>
           <form onSubmit={handleSubmit} className="flex gap-0 max-w-xl mx-auto">
             <input
               type="email"
