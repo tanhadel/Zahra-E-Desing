@@ -52,10 +52,10 @@ export default async function CollectionsPage() {
                 </Link>
               </div>
 
-              {/* Image Grid - 4 images */}
-              <div className="grid grid-cols-2 gap-4">
+              {/* Horizontal Scrolling Images */}
+              <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
                 {collections[0].images?.slice(0, 4).map((img: any, idx: number) => (
-                  <div key={idx} className="relative aspect-[4/5] overflow-hidden">
+                  <div key={idx} className="relative flex-shrink-0 w-[240px] h-[300px] snap-center overflow-hidden rounded">
                     <Image
                       src={urlFor(img).width(500).height(625).url()}
                       alt={`${collections[0].title} ${idx + 1}`}
@@ -66,10 +66,10 @@ export default async function CollectionsPage() {
                 )) || (
                   // Default images if no images in collection
                   <>
-                    <div className="relative aspect-[4/5] bg-gray-200" />
-                    <div className="relative aspect-[4/5] bg-gray-200" />
-                    <div className="relative aspect-[4/5] bg-gray-200" />
-                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
                   </>
                 )}
               </div>
@@ -126,10 +126,10 @@ export default async function CollectionsPage() {
         <section className="py-20 bg-gradient-to-b from-[#F5EFE7] to-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Image Grid - 4 images */}
-              <div className="grid grid-cols-2 gap-4 order-2 lg:order-1">
+              {/* Horizontal Scrolling Images */}
+              <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory order-2 lg:order-1">
                 {collections[1].images?.slice(0, 4).map((img: any, idx: number) => (
-                  <div key={idx} className="relative aspect-[4/5] overflow-hidden">
+                  <div key={idx} className="relative flex-shrink-0 w-[240px] h-[300px] snap-center overflow-hidden rounded">
                     <Image
                       src={urlFor(img).width(500).height(625).url()}
                       alt={`${collections[1].title} ${idx + 1}`}
@@ -139,10 +139,10 @@ export default async function CollectionsPage() {
                   </div>
                 )) || (
                   <>
-                    <div className="relative aspect-[4/5] bg-gray-200" />
-                    <div className="relative aspect-[4/5] bg-gray-200" />
-                    <div className="relative aspect-[4/5] bg-gray-200" />
-                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
+                    <div className="relative flex-shrink-0 w-[240px] h-[300px] bg-gray-200 rounded" />
                   </>
                 )}
               </div>
