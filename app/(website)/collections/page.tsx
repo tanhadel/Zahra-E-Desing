@@ -55,9 +55,9 @@ export default async function CollectionsPage() {
               {/* Image Grid - 4 images */}
               <div className="grid grid-cols-2 gap-4">
                 {collections[0].images?.slice(0, 4).map((img: any, idx: number) => (
-                  <div key={idx} className="relative aspect-[3/4] overflow-hidden">
+                  <div key={idx} className="relative aspect-[4/5] overflow-hidden">
                     <Image
-                      src={urlFor(img).width(400).height(534).url()}
+                      src={urlFor(img).width(500).height(625).url()}
                       alt={`${collections[0].title} ${idx + 1}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-500"
@@ -66,10 +66,10 @@ export default async function CollectionsPage() {
                 )) || (
                   // Default images if no images in collection
                   <>
-                    <div className="relative aspect-[3/4] bg-gray-200" />
-                    <div className="relative aspect-[3/4] bg-gray-200" />
-                    <div className="relative aspect-[3/4] bg-gray-200" />
-                    <div className="relative aspect-[3/4] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
                   </>
                 )}
               </div>
@@ -83,7 +83,7 @@ export default async function CollectionsPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             {/* Left Image */}
-            <div className="relative aspect-[3/4] overflow-hidden">
+            <div className="relative aspect-[4/5] overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800"
                 alt="Fashion Designer"
@@ -109,7 +109,7 @@ export default async function CollectionsPage() {
             </div>
 
             {/* Right Image */}
-            <div className="relative aspect-[3/4] overflow-hidden">
+            <div className="relative aspect-[4/5] overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=800"
                 alt="Fashion Shopping"
@@ -129,9 +129,9 @@ export default async function CollectionsPage() {
               {/* Image Grid - 4 images */}
               <div className="grid grid-cols-2 gap-4 order-2 lg:order-1">
                 {collections[1].images?.slice(0, 4).map((img: any, idx: number) => (
-                  <div key={idx} className="relative aspect-[3/4] overflow-hidden">
+                  <div key={idx} className="relative aspect-[4/5] overflow-hidden">
                     <Image
-                      src={urlFor(img).width(400).height(534).url()}
+                      src={urlFor(img).width(500).height(625).url()}
                       alt={`${collections[1].title} ${idx + 1}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-500"
@@ -139,10 +139,10 @@ export default async function CollectionsPage() {
                   </div>
                 )) || (
                   <>
-                    <div className="relative aspect-[3/4] bg-gray-200" />
-                    <div className="relative aspect-[3/4] bg-gray-200" />
-                    <div className="relative aspect-[3/4] bg-gray-200" />
-                    <div className="relative aspect-[3/4] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
+                    <div className="relative aspect-[4/5] bg-gray-200" />
                   </>
                 )}
               </div>
@@ -174,14 +174,24 @@ export default async function CollectionsPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Image */}
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1558769132-cb1aea8f2f88?q=80&w=2000"
-                alt="Fashion Workshop"
-                fill
-                className="object-cover"
-              />
+            {/* Left Images - 2 images side by side */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800"
+                  alt="Fashion Workshop 1"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1558769132-cb1aea8f2f88?q=80&w=800"
+                  alt="Fashion Workshop 2"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             {/* Right Content */}
@@ -262,10 +272,10 @@ export default async function CollectionsPage() {
               </p>
               <h2 className="text-4xl md:text-5xl font-display font-bold">
                 Our Collections
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              </h2>4/5] mb-4 overflow-hidden">
+                    {collection.coverImage && (
+                      <Image
+                        src={urlFor(collection.coverImage).width(500).height(625">
               {collections.slice(2).map((collection: any) => (
                 <Link
                   key={collection._id}
