@@ -12,12 +12,12 @@ interface ShoppingNowProps {
 }
 
 export default function ShoppingNow({ data }: ShoppingNowProps) {
-  const leftImage = data?.shoppingLeftImage 
-    ? urlFor(data.shoppingLeftImage).url()
+  const leftImage = data?.shoppingLeftImage?.url 
+    ? data.shoppingLeftImage.url
     : 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071'
   
-  const rightImage = data?.shoppingRightImage 
-    ? urlFor(data.shoppingRightImage).url()
+  const rightImage = data?.shoppingRightImage?.url 
+    ? data.shoppingRightImage.url
     : 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070'
   return (
     <section className="py-20 bg-white">

@@ -22,7 +22,7 @@ const defaultSlides = [
 
 export default function Hero({ data }: HeroProps) {
   const slides = data?.heroImages?.length 
-    ? data.heroImages.map(img => urlFor(img).url()) 
+    ? data.heroImages.map(img => img.url || urlFor(img).url()) 
     : defaultSlides
   
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -41,7 +41,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
   const testimonials = data?.testimonials?.length 
     ? data.testimonials.map(t => ({
         ...t,
-        image: urlFor(t.image).url(),
+        image: t.image?.url || urlFor(t.image).url(),
       }))
     : defaultTestimonials
 

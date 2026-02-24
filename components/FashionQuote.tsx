@@ -11,8 +11,8 @@ interface FashionQuoteProps {
 }
 
 export default function FashionQuote({ data }: FashionQuoteProps) {
-  const backgroundImage = data?.quoteBackgroundImage 
-    ? urlFor(data.quoteBackgroundImage).url()
+  const backgroundImage = data?.quoteBackgroundImage?.url 
+    ? data.quoteBackgroundImage.url
     : 'https://images.unsplash.com/photo-1558769132-cb1aea8f6024?q=80&w=2074'
   
   return (

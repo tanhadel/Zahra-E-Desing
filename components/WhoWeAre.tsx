@@ -13,8 +13,8 @@ interface WhoWeAreProps {
 }
 
 export default function WhoWeAre({ data }: WhoWeAreProps) {
-  const imageUrl = data?.whoWeAreImage 
-    ? urlFor(data.whoWeAreImage).url() 
+  const imageUrl = data?.whoWeAreImage?.url 
+    ? data.whoWeAreImage.url 
     : 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2000'
   const features = [
     {

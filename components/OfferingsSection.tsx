@@ -36,7 +36,7 @@ export default function OfferingsSection({ data }: OfferingsSectionProps) {
     ? data.offerings.map(offering => ({
         title: offering.title,
         description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit dolor',
-        image: urlFor(offering.image).url(),
+        image: offering.image?.url || urlFor(offering.image).url(),
       }))
     : defaultOfferings
 
