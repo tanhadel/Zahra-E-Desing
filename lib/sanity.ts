@@ -173,4 +173,36 @@ export const queries = {
       }
     }
   }`,
+
+  allProjects: `*[_type == "project"] | order(order asc, year desc) {
+    _id,
+    title,
+    slug,
+    category,
+    year,
+    description,
+    mainImage,
+    client,
+    duration,
+    pieces,
+    featured
+  }`,
+
+  projectBySlug: (slug: string) => `*[_type == "project" && slug.current == "${slug}"][0]{
+    ...,
+    "mainImageUrl": mainImage.asset->url,
+    "gallery": gallery[]{
+      "url": asset->url
+    }
+  }`,
+
+  featuredProjects: `*[_type == "project" && featured == true] | order(order asc) [0...6] {
+    _id,
+    title,
+    slug,
+    category,
+    year,
+    description,
+    mainImage
+  }`,
 }

@@ -3,133 +3,45 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { client, queries, urlFor } from '@/lib/sanity'
 
 const categories = ['All', 'Bridal', 'Haute Couture', 'Ready to Wear', 'Evening Wear', 'Custom Design']
 
-const projects = [
-  {
-    id: 1,
-    title: 'Royal Wedding Collection',
-    category: 'Bridal',
-    year: '2025',
-    description: 'Exquisite bridal gowns featuring delicate lace and timeless elegance',
-    image: 'https://images.unsplash.com/photo-1594552072238-71926d26d9e6?q=80&w=800',
-    details: {
-      client: 'Private Commission',
-      duration: '6 months',
-      pieces: '12 custom pieces'
-    }
-  },
-  {
-    id: 2,
-    title: 'Metropolitan Gala',
-    category: 'Haute Couture',
-    year: '2025',
-    description: 'Avant-garde haute couture pieces showcased at prestigious fashion events',
-    image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=800',
-    details: {
-      client: 'Fashion Week Stockholm',
-      duration: '8 months',
-      pieces: '20 unique designs'
-    }
-  },
-  {
-    id: 3,
-    title: 'Summer Elegance',
-    category: 'Ready to Wear',
-    year: '2024',
-    description: 'Light and airy summer collection with contemporary silhouettes',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800',
-    details: {
-      client: 'Retail Collection',
-      duration: '4 months',
-      pieces: '45 pieces'
-    }
-  },
-  {
-    id: 4,
-    title: 'Midnight Glamour',
-    category: 'Evening Wear',
-    year: '2024',
-    description: 'Sophisticated evening wear collection with luxurious fabrics',
-    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800',
-    details: {
-      client: 'Private Collection',
-      duration: '5 months',
-      pieces: '15 exclusive pieces'
-    }
-  },
-  {
-    id: 5,
-    title: 'Bespoke Suits Collection',
-    category: 'Custom Design',
-    year: '2024',
-    description: 'Tailored suits with impeccable craftsmanship and modern details',
-    image: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=800',
-    details: {
-      client: 'Corporate Clients',
-      duration: '3 months',
-      pieces: '8 custom suits'
-    }
-  },
-  {
-    id: 6,
-    title: 'Nordic Minimalism',
-    category: 'Ready to Wear',
-    year: '2023',
-    description: 'Clean lines and neutral tones inspired by Scandinavian design',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800',
-    details: {
-      client: 'Retail Collection',
-      duration: '4 months',
-      pieces: '38 pieces'
-    }
-  },
-  {
-    id: 7,
-    title: 'Red Carpet Dreams',
-    category: 'Evening Wear',
-    year: '2023',
-    description: 'Show-stopping gowns designed for unforgettable moments',
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800',
-    details: {
-      client: 'Celebrity Clients',
-      duration: '7 months',
-      pieces: '10 statement pieces'
-    }
-  },
-  {
-    id: 8,
-    title: 'Heritage Reimagined',
-    category: 'Haute Couture',
-    year: '2023',
-    description: 'Traditional craftsmanship meets contemporary design',
-    image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800',
-    details: {
-      client: 'Museum Exhibition',
-      duration: '10 months',
-      pieces: '14 art pieces'
-    }
-  },
-  {
-    id: 9,
-    title: 'Winter Bride',
-    category: 'Bridal',
-    year: '2023',
-    description: 'Romantic winter bridal collection with luxurious textures',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800',
-    details: {
-      client: 'Bridal Boutique',
-      duration: '5 months',
-      pieces: '16 bridal pieces'
-    }
+interface Project {
+  _id: string
+  title: string
+  slug: {
+    current: string
   }
-]
+  category: string
+  year: string
+  description: string
+  mainImage: any
+  client?: string
+  duration?: string
+  pieces?: string
+}
 
 export default function ProjectPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null)
+  const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const data = await client.fetch(queries.allProjects)
+        setProjects(data)
+      } catch (error) {
+        console.error('Error fetching projects:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchProjects()
+  }, [])
 
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
@@ -185,65 +97,89 @@ export default function ProjectPage() {
       {/* Projects Grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer"
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
-              >
-                <div className="relative h-[400px] overflow-hidden rounded-lg mb-4">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-                    hoveredProject === project.id ? 'bg-opacity-70' : 'bg-opacity-0'
-                  }`}>
-                    <div className={`absolute inset-0 flex flex-col justify-center items-center text-white p-6 transition-opacity duration-300 ${
-                      hoveredProject === project.id ? 'opacity-100' : 'opacity-0'
+          {loading ? (
+            <div className="text-center py-20">
+              <p className="text-xl text-gray-600">Loading projects...</p>
+            </div>
+          ) : filteredProjects.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-xl text-gray-600">
+                Inga projekt hittades. Lägg till projekt i Sanity Studio.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project._id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="group cursor-pointer"
+                  onMouseEnter={() => setHoveredProject(project._id)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
+                  <div className="relative h-[400px] overflow-hidden rounded-lg mb-4">
+                    {project.mainImage && (
+                      <Image
+                        src={urlFor(project.mainImage).width(800).height(1000).url()}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    )}
+                    <div className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+                      hoveredProject === project._id ? 'bg-opacity-70' : 'bg-opacity-0'
                     }`}>
-                      <div className="space-y-2 text-center">
-                        <p className="text-sm tracking-wider">
-                          <span className="font-bold">Client:</span> {project.details.client}
-                        </p>
-                        <p className="text-sm tracking-wider">
-                          <span className="font-bold">Duration:</span> {project.details.duration}
-                        </p>
-                        <p className="text-sm tracking-wider">
-                          <span className="font-bold">Pieces:</span> {project.details.pieces}
-                        </p>
+                      <div className={`absolute inset-0 flex flex-col justify-center items-center text-white p-6 transition-opacity duration-300 ${
+                        hoveredProject === project._id ? 'opacity-100' : 'opacity-0'
+                      }`}>
+                        <div className="space-y-2 text-center">
+                          {project.client && (
+                            <p className="text-sm tracking-wider">
+                              <span className="font-bold">Client:</span> {project.client}
+                            </p>
+                          )}
+                          {project.duration && (
+                            <p className="text-sm tracking-wider">
+                              <span className="font-bold">Duration:</span> {project.duration}
+                            </p>
+                          )}
+                          {project.pieces && (
+                            <p className="text-sm tracking-wider">
+                              <span className="font-bold">Pieces:</span> {project.pieces}
+                            </p>
+                          )}
+                        </div>
                       </div>
                     </div>
+                    {project.year && (
+                      <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded text-xs font-bold tracking-wider">
+                        {project.year}
+                      </div>
+                    )}
                   </div>
-                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded text-xs font-bold tracking-wider">
-                    {project.year}
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-xl font-display font-bold tracking-wider">
+                        {project.title}
+                      </h3>
+                      <span className="text-xs text-gray-500 tracking-wider">
+                        {project.category.toUpperCase()}
+                      </span>
+                    </div>
+                    {project.description && (
+                      <p className="text-gray-600">
+                        {project.description}
+                      </p>
+                    )}
                   </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-display font-bold tracking-wider">
-                      {project.title}
-                    </h3>
-                    <span className="text-xs text-gray-500 tracking-wider">
-                      {project.category.toUpperCase()}
-                    </span>
-                  </div>
-                  <p className="text-gray-600">
-                    {project.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -7,6 +7,7 @@ import { aboutType } from './aboutType'
 import { siteSettingsType } from './siteSettingsType'
 import { categoryType } from './categoryType'
 import homePageType from './homePageType'
+import { projectType } from './projectType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -18,5 +19,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     aboutType,
     siteSettingsType,
     homePageType,
+    projectType,
   ],
 }
