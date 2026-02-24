@@ -2,8 +2,11 @@ import { client, queries, urlFor } from '@/lib/sanity'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Revalidate every 10 seconds to get fresh data
+export const revalidate = 10
+
 export default async function BlogPage() {
-  const posts = await client.fetch(queries.allBlogPosts)
+  const posts = await client.fetch(queries.allBlogPosts, {}, { cache: 'no-store' })
 
   return (
     <div className="min-h-screen">

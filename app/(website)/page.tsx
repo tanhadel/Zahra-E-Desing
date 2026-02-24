@@ -8,8 +8,11 @@ import FashionQuote from '@/components/FashionQuote'
 import Testimonials from '@/components/Testimonials'
 import { client, queries, urlFor } from '@/lib/sanity'
 
+// Revalidate every 10 seconds to get fresh data
+export const revalidate = 10
+
 export default async function Home() {
-  const homeData = await client.fetch(queries.homePage)
+  const homeData = await client.fetch(queries.homePage, {}, { cache: 'no-store' })
 
   return (
     <>

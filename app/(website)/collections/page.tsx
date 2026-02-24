@@ -2,8 +2,11 @@ import { client, queries, urlFor } from '@/lib/sanity'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Revalidate every 10 seconds to get fresh data
+export const revalidate = 10
+
 export default async function CollectionsPage() {
-  const collections = await client.fetch(queries.allCollections)
+  const collections = await client.fetch(queries.allCollections, {}, { cache: 'no-store' })
 
   return (
     <div className="min-h-screen bg-white">

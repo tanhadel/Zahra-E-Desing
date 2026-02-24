@@ -2,8 +2,11 @@ import { client, queries, urlFor } from '@/lib/sanity'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Revalidate every 10 seconds to get fresh data
+export const revalidate = 10
+
 export default async function LookbookPage() {
-  const lookbooks = await client.fetch(queries.allLookbooks)
+  const lookbooks = await client.fetch(queries.allLookbooks, {}, { cache: 'no-store' })
 
   return (
     <div className="min-h-screen">
