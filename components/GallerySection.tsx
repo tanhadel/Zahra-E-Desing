@@ -91,21 +91,19 @@ export default function GallerySection() {
             </p>
           </motion.div>
 
-          {/* Masonry Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Horizontal Gallery */}
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
             {galleryImages.map((image, index) => (
               <motion.div
                 key={image.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative cursor-pointer overflow-hidden rounded-lg ${
-                  index % 3 === 0 ? 'md:row-span-2' : ''
-                }`}
+                className="group relative cursor-pointer overflow-hidden rounded-lg flex-shrink-0 snap-center"
                 onClick={() => setSelectedImage(index)}
               >
-                <div className={`relative ${index % 3 === 0 ? 'h-[600px]' : 'h-[290px]'}`}>
+                <div className="relative w-[300px] md:w-[400px] h-[400px]">
                   <Image
                     src={image.url}
                     alt={image.title}
