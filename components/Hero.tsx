@@ -87,24 +87,24 @@ export default function Hero({ data }: HeroProps) {
       </div>
 
       {/* Semi-transparent Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10 z-5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40 z-5" />
 
       {/* Content Box */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 bg-[#D4C5B0]/50 backdrop-blur-sm px-12 py-8 max-w-3xl mx-4 text-center shadow-lg mt-64"
+        className="relative z-10 bg-white/95 backdrop-blur-md px-16 py-12 max-w-4xl mx-4 text-center shadow-2xl border border-gray-100"
       >
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4 leading-tight">
-          Make people fall in love with your clothes.
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-900 mb-6 leading-tight tracking-tight">
+          {data?.heroTitle || 'Make people fall in love with your clothes.'}
         </h1>
-        <p className="text-white text-sm md:text-base mb-6 max-w-xl mx-auto leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+        <p className="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed font-light">
+          {data?.heroSubtitle || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'}
         </p>
         <Link 
           href="/collections"
-          className="inline-block px-9 py-3.5 bg-[#B89F86]/80 text-white text-xs font-medium tracking-widest hover:bg-[#A38A6F] transition-colors uppercase"
+          className="inline-block px-10 py-4 bg-gray-900 text-white text-xs font-semibold tracking-widest hover:bg-primary-500 hover:text-white transition-all duration-300 uppercase shadow-lg hover:shadow-xl"
         >
           EXPLORE THE COLLECTIONS
         </Link>
