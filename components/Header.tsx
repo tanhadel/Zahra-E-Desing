@@ -32,52 +32,52 @@ export default function Header() {
   }, [])
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled ? 'bg-[#E8DDD3]/95 shadow-md backdrop-blur-sm' : 'bg-[#E8DDD3]/80 backdrop-blur-sm'}`}>
-      <div className="container mx-auto px-6 py-5">
+    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled ? 'bg-white/95 shadow-lg backdrop-blur-md' : 'bg-white/80 backdrop-blur-sm'}`}>
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Left - Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-primary-400 transition-colors text-xs font-medium tracking-widest uppercase">
+            <Link href="/" className="text-gray-800 hover:text-primary-500 transition-colors text-xs font-semibold tracking-widest uppercase">
               HOMEPAGE
             </Link>
             <div className="relative group">
-              <button className="text-gray-700 hover:text-primary-400 transition-colors text-xs font-medium tracking-widest flex items-center gap-1 uppercase">
+              <button className="text-gray-800 hover:text-primary-500 transition-colors text-xs font-semibold tracking-widest flex items-center gap-1 uppercase">
                 SERVICES
                 <FiChevronDown size={14} />
               </button>
               {/* Services Dropdown */}
-              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                <Link href="/services/pricing" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase border-b border-gray-100">
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
+                <Link href="/services/pricing" className="block px-6 py-3 text-gray-800 hover:bg-primary-50 hover:text-primary-600 text-xs font-medium tracking-wider uppercase border-b border-gray-100 transition-colors">
                   PRICING PLAN
                 </Link>
-                <Link href="/collections" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase border-b border-gray-100">
+                <Link href="/collections" className="block px-6 py-3 text-gray-800 hover:bg-primary-50 hover:text-primary-600 text-xs font-medium tracking-wider uppercase border-b border-gray-100 transition-colors">
                   COLLECTIONS
                 </Link>
-                <Link href="/services/project" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase">
+                <Link href="/services/project" className="block px-6 py-3 text-gray-800 hover:bg-primary-50 hover:text-primary-600 text-xs font-medium tracking-wider uppercase transition-colors">
                   PROJECT
                 </Link>
               </div>
             </div>
-            <Link href="/contact" className="text-gray-700 hover:text-primary-400 transition-colors text-xs font-medium tracking-widest uppercase">
+            <Link href="/contact" className="text-gray-800 hover:text-primary-500 transition-colors text-xs font-semibold tracking-widest uppercase">
               CONTACT US
             </Link>
             <div className="relative group">
-              <button className="text-gray-700 hover:text-primary-400 transition-colors text-xs font-medium tracking-widest flex items-center gap-1 uppercase">
+              <button className="text-gray-800 hover:text-primary-500 transition-colors text-xs font-semibold tracking-widest flex items-center gap-1 uppercase">
                 PAGES
                 <FiChevronDown size={14} />
               </button>
               {/* Pages Dropdown */}
-              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                <Link href="/about" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase border-b border-gray-100">
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
+                <Link href="/about" className="block px-6 py-3 text-gray-800 hover:bg-primary-50 hover:text-primary-600 text-xs font-medium tracking-wider uppercase border-b border-gray-100 transition-colors">
                   ABOUT US
                 </Link>
-                <Link href="/team" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase border-b border-gray-100">
+                <Link href="/team" className="block px-6 py-3 text-gray-800 hover:bg-primary-50 hover:text-primary-600 text-xs font-medium tracking-wider uppercase border-b border-gray-100 transition-colors">
                   TEAM
                 </Link>
-                <Link href="/faq" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase border-b border-gray-100">
+                <Link href="/faq" className="block px-6 py-3 text-gray-800 hover:bg-primary-50 hover:text-primary-600 text-xs font-medium tracking-wider uppercase border-b border-gray-100 transition-colors">
                   FAQ
                 </Link>
-                <Link href="/blog" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase border-b border-gray-100">
+                <Link href="/blog" className="block px-6 py-3 text-gray-800 hover:bg-primary-50 hover:text-primary-600 text-xs font-medium tracking-wider uppercase border-b border-gray-100 transition-colors">
                   BLOG
                 </Link>
                 <Link href="/blog/post" className="block px-6 py-3 text-gray-800 hover:bg-gray-50 text-xs font-medium tracking-wider uppercase border-b border-gray-100">
