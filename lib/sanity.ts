@@ -39,7 +39,11 @@ export const queries = {
     description,
     season,
     year,
-    coverImage
+    coverImage,
+    "images": images[]{
+      ...,
+      "url": asset->url
+    }
   }`,
   
   collectionBySlug: (slug: string) => `*[_type == "collection" && slug.current == "${slug}"][0]{
