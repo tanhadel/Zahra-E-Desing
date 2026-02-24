@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter, Playfair_Display, Alex_Brush } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ 
@@ -14,6 +14,13 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
+const alexBrush = Alex_Brush({ 
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-script',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'Zahra E - Fashion Designer Portfolio',
   description: 'Elegant fashion designer portfolio showcasing exclusive collections and timeless style',
@@ -25,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="sv" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="sv" className={`${inter.variable} ${playfair.variable} ${alexBrush.variable}`}>
       <body>
         {children}
       </body>

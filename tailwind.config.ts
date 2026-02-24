@@ -48,6 +48,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        script: ['var(--font-script)', 'cursive'],
         serif: ['var(--font-playfair)', 'Georgia', 'serif'],
         display: ['var(--font-playfair)', 'Georgia', 'serif'],
       },
