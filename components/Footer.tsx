@@ -72,13 +72,13 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Section */}
-      <div className="bg-[#2B2B2B] text-white py-16">
+      <div className="bg-white py-16 border-t border-gray-200">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
             {/* Workshop */}
             <div>
-              <h4 className="text-xs font-semibold mb-6 text-[#C8A882] uppercase tracking-wider">WORKSHOP</h4>
-              <address className="not-italic text-white leading-relaxed">
+              <h4 className="text-xs font-semibold mb-6 text-[#B8956A] uppercase tracking-wider">WORKSHOP</h4>
+              <address className="not-italic text-gray-800 leading-relaxed">
                 <p className="text-2xl font-serif mb-1">Hemgatan 22 </p>
                 <p className="text-2xl font-serif mb-1">Stockholm - Sweden</p>
                 <p className="text-2xl font-serif">12367</p>
@@ -87,10 +87,10 @@ export default function Footer() {
 
             {/* Email */}
             <div>
-              <h4 className="text-xs font-semibold mb-6 text-[#C8A882] uppercase tracking-wider">EMAIL US</h4>
-              <div className="text-white">
+              <h4 className="text-xs font-semibold mb-6 text-[#B8956A] uppercase tracking-wider">EMAIL US</h4>
+              <div className="text-gray-800">
                 <p className="text-2xl font-serif mb-4">zahra@design.com</p>
-                <a href="mailto:zahra@design.com" className="text-xs text-[#C8A882] hover:text-white transition-colors uppercase tracking-wider border-b border-[#C8A882] pb-1">
+                <a href="mailto:zahra@design.com" className="text-xs text-[#B8956A] hover:text-[#9d7f58] transition-colors uppercase tracking-wider border-b border-[#B8956A] pb-1">
                   SEND EMAIL
                 </a>
               </div>
@@ -98,10 +98,10 @@ export default function Footer() {
 
             {/* Customer Support */}
             <div>
-              <h4 className="text-xs font-semibold mb-6 text-[#C8A882] uppercase tracking-wider">CUSTOMER SUPPORT</h4>
-              <div className="text-white">
+              <h4 className="text-xs font-semibold mb-6 text-[#B8956A] uppercase tracking-wider">CUSTOMER SUPPORT</h4>
+              <div className="text-gray-800">
                 <p className="text-3xl font-serif mb-4">(08) 1234 5678</p>
-                <a href="tel:0812345678" className="text-xs text-[#C8A882] hover:text-white transition-colors uppercase tracking-wider border-b border-[#C8A882] pb-1">
+                <a href="tel:0812345678" className="text-xs text-[#B8956A] hover:text-[#9d7f58] transition-colors uppercase tracking-wider border-b border-[#B8956A] pb-1">
                   LET&apos;S TALK
                 </a>
               </div>
@@ -109,8 +109,8 @@ export default function Footer() {
 
             {/* Opening Hours */}
             <div>
-              <h4 className="text-xs font-semibold mb-6 text-[#C8A882] uppercase tracking-wider">OPENING HOURS</h4>
-              <div className="text-white">
+              <h4 className="text-xs font-semibold mb-6 text-[#B8956A] uppercase tracking-wider">OPENING HOURS</h4>
+              <div className="text-gray-800">
                 <p className="text-2xl font-serif mb-1">Monday - Friday :</p>
                 <p className="text-2xl font-serif">09.00-17.00</p>
               </div>
@@ -120,8 +120,8 @@ export default function Footer() {
       </div>
 
       {/* Copyright Section */}
-      <div className="bg-[#1E1E1E] py-6 text-center">
-        <p className="text-white text-sm">
+      <div className="bg-gray-50 py-6 text-center border-t border-gray-200">
+        <p className="text-gray-600 text-sm">
           Copyright © {currentYear} Zahra Ebraimi. All rights reserved. Powered by Taha.
         </p>
       </div>
