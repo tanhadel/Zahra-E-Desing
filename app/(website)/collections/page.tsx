@@ -272,20 +272,20 @@ export default async function CollectionsPage() {
               </p>
               <h2 className="text-4xl md:text-5xl font-display font-bold">
                 Our Collections
-              </h2>4/5] mb-4 overflow-hidden">
-                    {collection.coverImage && (
-                      <Image
-                        src={urlFor(collection.coverImage).width(500).height(625">
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {collections.slice(2).map((collection: any) => (
                 <Link
                   key={collection._id}
                   href={`/collections/${collection.slug.current}`}
                   className="group"
                 >
-                  <div className="relative aspect-[3/4] mb-4 overflow-hidden">
+                  <div className="relative aspect-[4/5] mb-4 overflow-hidden">
                     {collection.coverImage && (
                       <Image
-                        src={urlFor(collection.coverImage).width(600).height(800).url()}
+                        src={urlFor(collection.coverImage).width(500).height(625).url()}
                         alt={collection.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
