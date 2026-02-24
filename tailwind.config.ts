@@ -50,7 +50,6 @@ const config: Config = {
         sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-playfair)', 'Georgia', 'serif'],
         display: ['var(--font-playfair)', 'Georgia', 'serif'],
-        display: ['var(--font-playfair)', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
