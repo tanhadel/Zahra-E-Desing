@@ -60,7 +60,15 @@ export const projectType = defineType({
       name: 'gallery',
       title: 'Gallery Images',
       type: 'array',
-      of: [{type: 'image'}],
+      of: [{
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      }],
+      options: {
+        layout: 'grid',
+      },
     }),
     defineField({
       name: 'client',
